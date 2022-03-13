@@ -1,1 +1,1 @@
-# legasy-react-redux-clicker
+# legacy-react-redux-clicker
