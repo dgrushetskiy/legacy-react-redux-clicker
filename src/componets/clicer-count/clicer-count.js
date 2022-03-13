@@ -1,26 +1,36 @@
-import {useSelector, useDispatch} from "react-redux";
+import {connect} from "react-redux";
 import {increment, decrement, reset} from '../../store';
+import {Component} from "react";
 
-export default function ClicerCount() {
-    return (
-        <div>
-            <h1>Counter:</h1>
-            <Counter/>
-        </div>
-    )
+export default class ClicerCount extends Component {
+    render() {
+        return (
+            <div>
+                <h1>Counter:</h1>
+                <Counter/>
+            </div>
+        )
+    }
 }
 
-const Counter = () => {
-    const {counter} = useSelector((state) => state);
-    console.log(counter)
-    const dispatch = useDispatch();
+class _Counter extends Component {
 
-    return (
-        <div>
-            <h2>{counter}</h2>
-            <button onClick={() => dispatch(decrement)}>-</button>
-            <button onClick={() => dispatch(increment)}>+</button>
-            <button onClick={() => dispatch(reset)}>reset</button>
-        </div>
-    );
+    render() {
+        return (
+            <div>
+                <h2>0</h2>
+                <button>-</button>
+                <button>+</button>
+                <button>reset</button>
+            </div>
+        );
+    }
 };
+
+const mapStateToProps = () => {};
+const mapDispatchToProps = () => {};
+
+const Counter = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(_Counter)
