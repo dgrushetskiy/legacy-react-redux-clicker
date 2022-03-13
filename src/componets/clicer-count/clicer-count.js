@@ -13,24 +13,31 @@ export default class ClicerCount extends Component {
     }
 }
 
-class _Counter extends Component {
+class CounterApp extends Component {
 
     render() {
+        const {count, inc, dec, res} = this.props;
         return (
             <div>
-                <h2>0</h2>
-                <button>-</button>
-                <button>+</button>
-                <button>reset</button>
+                <h2>{count}</h2>
+                <button onClick={dec}>-</button>
+                <button onClick={inc}>+</button>
+                <button onClick={res}>reset</button>
             </div>
         );
     }
-};
+}
 
-const mapStateToProps = () => {};
-const mapDispatchToProps = () => {};
+const mapStateToProps = (state) => ({
+    count: state.counter,
+});
+const mapDispatchToProps = {
+    inc: increment,
+    dec: decrement,
+    res: reset,
+};
 
 const Counter = connect(
     mapStateToProps,
     mapDispatchToProps,
-)(_Counter)
+)(CounterApp)
